@@ -5,10 +5,19 @@ document.body.append(highlight);
 
 function highlightLink() {
   const linkCoords = this.getBoundingClientRect();
-  console.log(linkCoords);
-  highlight.style.width = `${linkCoords.width}px`;
-  highlight.style.height = `${linkCoords.height}px`;
-  highlight.style.transform = `translate(${linkCoords.x}px, ${linkCoords.y}px)`;
+  // console.log(linkCoords);
+  const coords = {
+    width: linkCoords.width,
+    height: linkCoords.height,
+    top: linkCoords.top + window.scrollY,
+    left: linkCoords.left + window.scrollX,
+  };
+  // console.log(coords);
+
+
+  highlight.style.width = `${coords.width}px`;
+  highlight.style.height = `${coords.height}px`;
+  highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
 
 }
 
